@@ -13,8 +13,7 @@ jupyter:
     name: python3
 ---
 
-# Name(s)
-**PUT YOUR FULL NAME(S) HERE**
+# Steven Luu
 
 
 **Instructions:** This is an individual assignment, but you may discuss your code with your neighbors.
@@ -47,45 +46,80 @@ For the following exercises please read the Python appendix in the Marsland text
 
 ```python
 # YOUR SOLUTION HERE
-#a=1000
-print('this is my answer',a+1) 
+import numpy as np
+a = np.empty((6,4),dtype= np.int)
+a.fill(2)
+a
 ```
 
 ## Exercise 2
 
 ```python
 # YOUR SOLUTION HERE
-a=2000
+
+b = np.empty((6,4), dtype = np.int)
+b.fill(2)
+np.fill_diagonal(b, 3)
+b
 ```
 
 ## Exercise 3
 
-```python
-# YOUR SOLUTION HERE
-```
+
+**a * b multiplies the numbers that are in the same spot, but**
+**np.dot(a,b) uses actual matrix multiplication, and the dimensions** 
+**are not compatible to do so**
+
+
 
 ## Exercise 4
 
 ```python
 # YOUR SOLUTION HERE
+print(np.dot(a.transpose(),b))
+# (6 x 4) * (4 * 6)
+#      ^_____^
+
+print(np.dot(a,b.transpose()))
+# (4 x 6) * (6 x 4)
+#      ^_____^
+
+
+# The results are different shapes because the inside numbers are
+# different from the matrix multiplication
 ```
 
 ## Exercise 5
 
 ```python
 # YOUR SOLUTION HERE
+def printThing():
+    print("Hello World!")
+    
+printThing()
 ```
 
 ## Exercise 6
 
 ```python
 # YOUR SOLUTION HERE
+
+def createArrays():
+    arr1 = np.random.randint(0, 100, (3, 6, 5))
+    arr2 = np.random.randint(0, 100, (3, 6, 5))
+    
+    print(arr1 + arr2)
+    
+    
+createArrays()
+    
 ```
 
 ## Exercise 7
 
 ```python
 # YOUR SOLUTION HERE
+
 ```
 
 ## Excercises 8-???
