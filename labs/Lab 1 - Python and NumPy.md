@@ -35,7 +35,11 @@ Please read and reference the following as your progress through this course.
 **In the space provided below, what are three things that still remain unclear or need further explanation?**
 
 
-**YOUR ANSWER HERE**
+1. If you write functions in other notebooks, can you call them across different notebooks?
+
+2. I'm still unsure of when you should use numpy dimensions like (1,1) vs (,1)
+
+3. 
 
 
 ## Exercises 1-7
@@ -85,6 +89,7 @@ print(np.dot(a,b.transpose()))
 #      ^_____^
 
 
+
 # The results are different shapes because the inside numbers are
 # different from the matrix multiplication
 ```
@@ -104,14 +109,16 @@ printThing()
 ```python
 # YOUR SOLUTION HERE
 
-def createArrays():
-    arr1 = np.random.randint(0, 100, (3, 6, 5))
-    arr2 = np.random.randint(0, 100, (3, 6, 5))
-    
-    print(arr1 + arr2)
+def createArray():
+    arr1 = np.random.randint(0, 20, (6, 5))
     
     
-createArrays()
+    print(arr1)
+    print("Mean of Array is: ", arr1.mean())
+    print("Sum of Array is: ", arr1.sum())
+    
+    
+createArray()
     
 ```
 
@@ -119,7 +126,16 @@ createArrays()
 
 ```python
 # YOUR SOLUTION HERE
-
+arr1 = np.random.randint(0, 2, (1, 5, 5))
+arr1 = arr1.reshape(5,5)
+ones = 0
+print(arr1)
+for row in arr1:
+    for value in row:
+        if value == 1:
+            ones += 1
+print(ones)
+arr1[np.where(arr1==1)].sum()
 ```
 
 ## Excercises 8-???
@@ -131,6 +147,9 @@ Repeat exercise A.1 from Marsland, but create a Pandas DataFrame instead of a Nu
 
 ```python
 # YOUR SOLUTION HERE
+import pandas as pd
+a = pd.DataFrame(np.ones((6,4)) * 2)
+a
 ```
 
 ## Exercise 9
@@ -138,6 +157,10 @@ Repeat exercise A.2 using a DataFrame instead.
 
 ```python
 # YOUR SOLUTION HERE
+b = np.ones((6,4)) * 2
+b = pd.DataFrame(b)
+b.iloc[range(4),range(4)] =3
+b
 ```
 
 ## Exercise 10
@@ -145,6 +168,9 @@ Repeat exercise A.3 using DataFrames instead.
 
 ```python
 # YOUR SOLUTION HERE
+
+print(a.multiply(b))
+#a.dot(b)
 ```
 
 ## Exercise 11
@@ -152,6 +178,16 @@ Repeat exercise A.7 using a dataframe.
 
 ```python
 # YOUR SOLUTION HERE
+arr1 = np.random.randint(0, 2, (5, 5))
+df = pd.DataFrame(arr1)
+print(df)
+ones = 0
+for i in range(len(df)):
+    for num in df[i]:
+        if num == 1:
+            ones += 1
+print(ones)
+int(df[df == 1].sum().sum())
 ```
 
 ## Exercises 12-14
@@ -162,6 +198,7 @@ titanic_df = pd.read_csv(
     "https://raw.githubusercontent.com/dlsun/data-science-book/master/data/titanic.csv"
 )
 titanic_df
+
 ```
 
 Notice how we have nice headers and mixed datatypes? That is one of the reasons we might use Pandas. Please refresh your memory by looking at the 10 minutes to Pandas again, but then answer the following.
@@ -172,6 +209,7 @@ How do you select the ``name`` column without using .iloc?
 
 ```python
 ## YOUR SOLUTION HERE
+titanic_df.name
 ```
 
 ## Exercise 13
@@ -180,6 +218,8 @@ After setting the index to ``sex``, how do you select all passengers that are ``
 ```python
 ## YOUR SOLUTION HERE
 titanic_df.set_index('sex',inplace=True)
+females = titanic_df.loc['female']
+len(females)
 ```
 
 ## Exercise 14
@@ -187,6 +227,7 @@ How do you reset the index?
 
 ```python
 ## YOUR SOLUTION HERE
+titanic_df.reset_index(inplace = True)
 ```
 
 ```python
