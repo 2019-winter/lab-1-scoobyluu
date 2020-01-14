@@ -39,7 +39,7 @@ Please read and reference the following as your progress through this course.
 
 2. I'm still unsure of when you should use numpy dimensions like (1,1) vs (,1)
 
-3. 
+3. Is there an easy way to create notebook files from md files locally?
 
 
 ## Exercises 1-7
